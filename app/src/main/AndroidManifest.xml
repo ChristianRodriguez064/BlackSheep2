@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseDeDatosBlackSheep">
-        <activity android:name=".Login"></activity>
+        <activity android:name=".ActualizarCaja"></activity>
+        <activity android:name=".CajaDetalle" />
+        <activity android:name=".Cajas" />
+        <activity android:name=".Balance" />
+        <activity android:name=".VerPerfiles" />
+        <activity android:name=".Login" />
         <activity android:name=".RegistroPerfiles" />
         <activity android:name=".DetallePerfil" />
         <activity android:name=".Perfiles" />

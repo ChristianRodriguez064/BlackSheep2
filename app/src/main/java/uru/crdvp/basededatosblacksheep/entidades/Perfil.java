@@ -1,11 +1,13 @@
 package uru.crdvp.basededatosblacksheep.entidades;
 
-public class Perfiles {
+import java.io.Serializable;
+
+public class Perfil implements Serializable {
 
     private Integer idPerfil;
     private String nombre;
 
-    public Perfiles(Integer idPerfil, String nombre) {
+    public Perfil(Integer idPerfil, String nombre) {
         this.idPerfil = idPerfil;
         this.nombre = nombre;
     }

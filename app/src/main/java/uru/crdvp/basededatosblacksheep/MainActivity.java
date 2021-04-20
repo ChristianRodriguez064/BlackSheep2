@@ -36,11 +36,17 @@ public class MainActivity extends AppCompatActivity {
         Button IngresarPerfiles = (Button) findViewById(R.id.BtnPerfiles);
         Button AgregarPerfiles = (Button) findViewById(R.id.BtnPerfilesAdd);
         Button verLogin = (Button) findViewById(R.id.btnLogin);
+        Button verPerfiles = (Button) findViewById(R.id.BtnVerPerfiles);
+
+        verPerfiles.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent perfiles = new Intent(MainActivity.this, VerPerfiles.class);
+                startActivity(perfiles);
+            }
+        });
 
         IngresarUsuario.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
-                Toast.makeText(getApplicationContext(),"Funciona el boton",Toast.LENGTH_SHORT).show();
                 Intent ingresoUsuario = new Intent(MainActivity.this, IngresoUsuario.class);
                 startActivity(ingresoUsuario);
             }
@@ -55,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         VerificarUsuario.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
-                Toast.makeText(getApplicationContext(),"Verifico Usuarios",Toast.LENGTH_SHORT).show();
                 Intent consultarUsuario = new Intent(MainActivity.this, ConsultaUsuario.class);
                 startActivity(consultarUsuario);
             }
@@ -64,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
         IngresarPerfiles.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
-                Toast.makeText(getApplicationContext(),"Ingreso Perfiles",Toast.LENGTH_SHORT).show();
                 Intent perfiles = new Intent(MainActivity.this, Perfiles.class);
                 startActivity(perfiles);
             }
@@ -73,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         AgregarPerfiles.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
-                Toast.makeText(getApplicationContext(),"Ingreso Perfiles",Toast.LENGTH_SHORT).show();
                 Intent agregarPerfiles = new Intent(MainActivity.this, RegistroPerfiles.class);
                 startActivity(agregarPerfiles);
             }

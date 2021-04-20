@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,26 +26,33 @@ public class RegistroPerfiles extends AppCompatActivity {
     ArrayList<String> listaPersonas;
     ArrayList<Usuario> personasLista;
     ConexionSQLiteHelper conn;
+    Usuario usuarioIngreso;
+    boolean registroCorrecto = false;
+    TextView usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_perfiles);
 
+        recibirDatos();
+
         perfil = (EditText) findViewById(R.id.tvNombrePerfil);
-        comboUsuarios = (Spinner) findViewById(R.id.SpnUsuario);
+        //comboUsuarios = (Spinner) findViewById(R.id.SpnUsuario);
         comboPerfiles = (Spinner) findViewById(R.id.SpnPerfiles);
+        usuario = (TextView) findViewById(R.id.tvUsuario);
+        usuario.setText(usuarioIngreso.getIdUsuario());
 
         conn = new ConexionSQLiteHelper(this, "bd_BlackSheep", null,1);
         
         consultarListaPersonas();
 
-        ArrayAdapter<CharSequence> adaptador = new ArrayAdapter (this,android.R.layout.simple_spinner_item,listaPersonas);
-        comboUsuarios.setAdapter(adaptador);
+        //ArrayAdapter<CharSequence> adaptador = new ArrayAdapter (this,android.R.layout.simple_spinner_item,listaPersonas);
+        //comboUsuarios.setAdapter(adaptador);
 
         ArrayAdapter<CharSequence> adaptadorPerfiles = ArrayAdapter.createFromResource(this,R.array.perfil_defecto,android.R.layout.simple_spinner_item);
         comboPerfiles.setAdapter(adaptadorPerfiles);
-
+/*
         comboUsuarios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -56,6 +64,13 @@ public class RegistroPerfiles extends AppCompatActivity {
 
             }
         });
+
+ */
+    }
+
+    private void recibirDatos() {
+        Bundle objetoEnviado = getIntent().getExtras();
+        usuarioIngreso = (Usuario) objetoEnviado.getSerializable("usuario");
     }
 
     private void consultarListaPersonas() {
@@ -79,17 +94,21 @@ public class RegistroPerfiles extends AppCompatActivity {
 
     private void obtenerLista() {
         listaPersonas = new ArrayList<String>();
-        listaPersonas.add("Seleccione");
-
         for (int i = 0; i< personasLista.size();i++){
-            listaPersonas.add(personasLista.get(i).getIdUsuario() + " - "
-                    + personasLista.get(i).getNombre());
+            //if(personasLista.get(i).getIdUsuario().toUpperCase().trim().equals(usuarioIngreso.getIdUsuario().toUpperCase().trim())){
+                listaPersonas.add(personasLista.get(i).getIdUsuario() + " - "
+                                    + personasLista.get(i).getNombre());
+            //}
         }
     }
 
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.BtnConfirmar: registrarPerfil();
+            case R.id.BtnConfirmar:
+                registrarPerfil();
+                if (registroCorrecto){
+                    finish();
+                }
         }
     }
 
@@ -99,33 +118,28 @@ public class RegistroPerfiles extends AppCompatActivity {
 
         //Utilizo para grabar tabla de perfil
         ContentValues values = new ContentValues();
-        int idComboPerfil = (int) comboPerfiles.getSelectedItemId();
-
+        int idComboPerfil    = (int) comboPerfiles.getSelectedItemId();
         values.put(Utilidades.CAMPO_IDPERFIL,idComboPerfil);
         values.put(Utilidades.CAMPO_PERFIL_NOMBRE,perfil.getText().toString());
 
         Toast.makeText(getApplicationContext(),"idComboPerfil " + idComboPerfil + "\n" + "Nombre: " + perfil.getText().toString(),Toast.LENGTH_SHORT).show();
-        int idCombo = (int) comboUsuarios.getSelectedItemId();
+        //int idCombo = (int) comboUsuarios.getSelectedItemId();
 
         //Utilizo para grabar tabla de relacion perfil - usuario
         ContentValues valuesRelacion = new ContentValues();
         valuesRelacion.put(Utilidades.CAMPO_IDPERFILU,idComboPerfil);
-        valuesRelacion.put(Utilidades.CAMPO_IDPERFIL_USUARIO,personasLista.get(idCombo-1).getIdUsuario());
+        valuesRelacion.put(Utilidades.CAMPO_IDPERFIL_USUARIO,usuarioIngreso.getIdUsuario());
 
-
-        if(idCombo != 0){
-
+        try {
             Long idResultante = db.insert(Utilidades.TABLA_PERFILES,Utilidades.CAMPO_IDPERFIL,values);
             Long idResultanteRelacion = db.insert(Utilidades.TABLA_USUARIO_PERFILES,Utilidades.CAMPO_IDPERFIL_USUARIO,valuesRelacion);
-
-            //Toast.makeText(getApplicationContext(),"Id Resultante " + idResultante,Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(),"Id ResultanteRelacion " + idResultanteRelacion,Toast.LENGTH_SHORT).show();
-
-
+            Toast.makeText(getApplicationContext(),"idResultante Perfiles " + idResultante,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"idResultanteRelacion " + idResultanteRelacion,Toast.LENGTH_SHORT).show();
+            registroCorrecto = true;
             db.close();
-
-        }else {
-            Toast.makeText(getApplicationContext(),"Debe seleccionar Usuario",Toast.LENGTH_SHORT).show();
+        } catch (Exception e){
+            Toast.makeText(getApplicationContext(),"Verifique el perfil ingresa.",Toast.LENGTH_SHORT).show();
+            db.close();
         }
     }
 }

@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="40"
-        tools:srcCompat="@drawable/diseno_de_logo_4" />
+        android:background="#00000000"
+        android:src="@drawable/diseno_de_logo_4"/>
 
     <EditText
         android:id="@+id/edtLogin"
@@ -68,6 +69,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@color/black"
+        android:onClick="onClick"
         />
 
     <LinearLayout
@@ -83,14 +85,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:gravity="center"
-            tools:srcCompat="@drawable/facebook_icon" />
+            android:background="#00000000"
+            android:onClick="onClick"
+            android:src="@drawable/facebook_icon"/>
         <ImageButton
             android:id="@+id/imgInstagram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="5dp"
-            tools:srcCompat="@drawable/instagram_icon" />
+            android:background="#00000000"
+            android:onClick="onClick"
+            android:src="@drawable/instagram_icon"/>
 
         <ImageButton
             android:id="@+id/imgTwitter"
@@ -98,7 +104,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="5dp"
-            tools:srcCompat="@drawable/twitter_icon" />
+            android:background="#00000000"
+            android:onClick="onClick"
+            android:src="@drawable/twitter_icon"/>
 
         <ImageButton
             android:id="@+id/imgGogle"
@@ -106,7 +114,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="5dp"
-            tools:srcCompat="@drawable/google_icon" />
+            android:background="#00000000"
+            android:onClick="onClick"
+            android:src="@drawable/google_icon"/>
     </LinearLayout>
     <TextView
         android:id="@+id/tvRecordarPass"
@@ -116,6 +126,8 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginBottom="5dp"
-        android:text="@string/obtenerContraseña" />
+        android:text="@string/obtenerContraseña"
+        android:onClick="onClick"
+        />
 
 </LinearLayout>

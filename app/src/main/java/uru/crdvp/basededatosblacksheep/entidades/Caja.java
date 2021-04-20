@@ -1,14 +1,16 @@
 package uru.crdvp.basededatosblacksheep.entidades;
 
-public class Cajas {
+import java.io.Serializable;
+
+public class Caja implements Serializable {
     private Integer idCaja;
-    private Integer idPerfil;
+    private String idPerfil;
     private String nombre;
     private Integer porcentaje;
     private Integer monto;
     private String descripcion;
 
-    public Cajas(Integer idCaja, Integer idPerfil, String nombre, Integer porcentaje, Integer monto, String descripcion) {
+    public Caja(Integer idCaja, String idPerfil, String nombre, Integer porcentaje, Integer monto, String descripcion) {
         this.idCaja = idCaja;
         this.idPerfil = idPerfil;
         this.nombre = nombre;
@@ -25,11 +27,11 @@ public class Cajas {
         this.idCaja = idCaja;
     }
 
-    public Integer getIdPerfil() {
+    public String getIdPerfil() {
         return idPerfil;
     }
 
-    public void setIdPerfil(Integer idPerfil) {
+    public void setIdPerfil(String idPerfil) {
         this.idPerfil = idPerfil;
     }
 

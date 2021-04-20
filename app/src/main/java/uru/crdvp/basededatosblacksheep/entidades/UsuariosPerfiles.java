@@ -1,6 +1,8 @@
 package uru.crdvp.basededatosblacksheep.entidades;
 
-public class UsuariosPerfiles {
+import java.io.Serializable;
+
+public class UsuariosPerfiles implements Serializable {
     private String idUsuario;
     private Integer idPerfil;
 

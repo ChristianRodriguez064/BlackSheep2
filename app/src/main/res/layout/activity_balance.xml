@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_de_pantalla3"
+    tools:context=".Balance">
+
+    <LinearLayout
+        android:id="@+id/llBotonesMovimientos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/border_ui"
+        >
+
+        <Button
+            android:id="@+id/btnIngresoMov"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:gravity="center|top"
+            android:onClick="onClick"
+            android:text="@string/IngresarMovimiento"
+            android:textStyle="bold"
+            android:layout_marginLeft="2dp"
+            android:textColor="@color/dolar"
+            android:background="@drawable/border_ui"
+            />
+
+        <Button
+            android:id="@+id/btnIngresoGasto"
+            android:layout_width="204dp"
+            android:layout_weight="6"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:text="Gastos -$"
+            android:onClick="onClick"
+            android:layout_marginRight="2dp"
+            android:textStyle="bold"
+            android:textColor="@color/egreso"
+            android:background="@drawable/border_ui"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llListaMovimientos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="40"
+        android:background="@drawable/border_ui"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ $2000"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/black"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- $500"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:gravity="right"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ $1000"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:gravity="left"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- $500"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="right"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ $1000"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:textColor="@color/black"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- $500"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:gravity="right"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            >
+        </TextView>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvTotalBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Total: $2500"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:background="@drawable/border_ui"
+        ></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/colorAccent"
+        >
+
+        <ImageButton
+            android:id="@+id/imgBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:src="@drawable/balance"
+            android:onClick="onClick"
+            />
+
+        <ImageButton
+            android:id="@+id/imgCajas"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:src="@drawable/cajas"
+            android:onClick="onClick"
+            />
+
+        <ImageButton
+            android:id="@+id/imgNotificaciones"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:src="@drawable/notificaciones"
+            android:onClick="onClick"
+            />
+    </LinearLayout>
+
+</LinearLayout>

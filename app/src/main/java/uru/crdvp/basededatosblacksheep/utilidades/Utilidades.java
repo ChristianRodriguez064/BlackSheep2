@@ -27,7 +27,7 @@ public class Utilidades {
     public static final String CAMPO_IDPERFIL = "idPerfil";
     public static final String CAMPO_PERFIL_NOMBRE = "nombre";
     // Sentencia SQL
-    public static final String CREAR_TABLA_PERFILES = "CREATE TABLE "+TABLA_PERFILES+" ("+CAMPO_IDPERFIL+" INTEGER PRIMARY KEY, "+CAMPO_PERFIL_NOMBRE+" TEXT)";
+    public static final String CREAR_TABLA_PERFILES = "CREATE TABLE "+TABLA_PERFILES+" ("+CAMPO_IDPERFIL+" INTEGER PRIMARY KEY AUTOINCREMENT, "+CAMPO_PERFIL_NOMBRE+" TEXT)";
 
     // Constantes de tabla de Cajas
     public static final String TABLA_CAJAS = "cajas";
